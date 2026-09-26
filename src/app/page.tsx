@@ -6,6 +6,7 @@ export default function Home() {
   return (
    <main className="min-h-screen bg-black p-10">
     <Banner/>
+    
     <Library/>
        
     <h1>Fit Log Home</h1>
