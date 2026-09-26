@@ -9,7 +9,7 @@ export default function Home() {
     
     <Library/>
        
-    <h1>Fit Log Home</h1>
+    
    </main>
   );
 }

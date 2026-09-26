@@ -5,18 +5,18 @@ import React from 'react';
 
 
 
-const Workouts = async () => {
-    const data = await fatchData()
-    // console.log(data)
-    return (
-        <div>
-            {data.map((workout: IWorkout, ind: number)=> {
-                return  <WorkCard key={ind} workout={workout} />;
-            })}
+// const Workouts = async () => {
+//     const data = await fatchData()
+//     console.log(data)
+//     return (
+//         <div>
+//             {data.map((workout: IWorkout, ind: number)=> {
+//                 return  <WorkCard key={ind} workout={workout} />;
+//             })}
 
             
-        </div>
-    );
-};
+//         </div>
+//     );
+// };
 
-export default Workouts;
+// export default Workouts;
