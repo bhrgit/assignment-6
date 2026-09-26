@@ -1,15 +1,19 @@
+import WorkCard from '@/components/shared/WorkCard';
+import fatchData from '@/lib/FatchData';
+import { IWorkout } from '@/types/wk.type';
 import React from 'react';
 
-const getWorkouts = async() => {
-    const res= await fetch('https://api.abcz.workers.dev/api/fitlog');
-    const data = await res.json();
-    return data;
-};
 
 
-const Workouts = () => {
+const Workouts = async () => {
+    const data = await fatchData()
+    // console.log(data)
     return (
         <div>
+            {data.map((workout: IWorkout, ind: number)=> {
+                return  <WorkCard key={ind} workout={workout} />;
+            })}
+
             
         </div>
     );
