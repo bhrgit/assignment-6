@@ -1,9 +1,31 @@
+import fatchData from '@/lib/FatchData';
+import { IWorkout } from '@/types/wk.type';
 import Image from 'next/image';
 import React from 'react';
 
-const ProductDetails = () => {
+
+type TProductDetailsProps = {
+  params: {
+    id: number;
+  };
+};
+
+export async function generateStaticParams() {
+    const allWorks = await fatchData();
+
+    return allWorks.map((item: IWorkout) => {
+        return {id: item.id}
+    })    
+}
+
+
+const ProductDetails = async({params}: TProductDetailsProps) => {
+    const { id } = await params;
+    const 
     return (
-        <div>
+        <main>
+            {data.map((item) => (
+            <div key={item.id} item={item}>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     {/* <Image> */}
@@ -38,7 +60,9 @@ const ProductDetails = () => {
                 </div>
             </div>
             
-        </div>
+            </div>
+           )) }
+        </main>
     );
 };
 
