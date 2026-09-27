@@ -1,5 +1,6 @@
 import { IWorkout } from '@/types/wk.type';
 import Image from 'next/image';
+import Link from 'next/link';
 
 type TWorkCardProps = {
   workout: IWorkout;
@@ -41,6 +42,14 @@ const WorkCard = ({ workout }: TWorkCardProps) => {
             ⭐{workout.rating}
           </div>
         </div>
+        {" "}
+        <Link
+          href={`../../app/workouts/${workout.id}`}
+          className="mt-5 block w-full rounded-xl bg-green-600 py-3 text-center font-semibold text-white transition hover:bg-green-700"
+        >
+          {" "}
+          View Details{" "}
+        </Link>{" "}
       </div>
     </div>
   );

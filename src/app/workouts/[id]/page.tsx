@@ -6,25 +6,28 @@ import React from 'react';
 
 
 type TProductDetailsProps = {
-  params: {
+  params:  Promise<{
     id: string;
-  };
+  }>;
 };
 
 export async function generateStaticParams() {
     const allWorks = await fatchData();
 
-    return allWorks.map((item: IWorkout) => {
-        return {id: item.id.toString()}
-    })    
+    return allWorks.map((item: IWorkout) => ({
+    id: item.id.toString(),
+  }));
 }
+
 
 
 const ProductDetails = async({params}: TProductDetailsProps) => {
     const { id } = await params;
     const allWorks = await fatchData();
 
-    const singWork = allWorks.find((singWork: IWorkout)=> singWork.id==Number(id))
+    const singWork = allWorks.find(
+        (workout: IWorkout) => workout.id === Number(id)
+  );
 
      if (!singWork) {
         notFound();
@@ -36,12 +39,54 @@ const ProductDetails = async({params}: TProductDetailsProps) => {
             <div>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
-                    {/* <Image> */}
+                    <Image
+                    src={singWork.image}
+                    width={600}
+                    height={400}
+                    alt={singWork.name}
+                    className="rounded-lg"/>
+
                     <div>
-                    <h1 className="text-5xl font-bold">{singWork.title}</h1>
+                    <h1 className="text-5xl font-bold">{singWork.name}</h1>
                     <p className="py-6">
-                        {singWork.discription}
+                        {singWork.description}
                     </p>
+                    <div className="space-y-2">
+                        <p>
+                        <strong>Equipment:</strong>{" "}
+                        {singWork.equipment}
+                        </p>
+
+                        <p>
+                        <strong>Difficulty:</strong>{" "}
+                        {singWork.difficulty}
+                        </p>
+
+                        <p>
+                        <strong>Duration:</strong>{" "}
+                        {singWork.duration} minutes
+                        </p>
+
+                        <p>
+                        <strong>Calories:</strong>{" "}
+                        {singWork.caloriesBurned}
+                        </p>
+
+                        <p>
+                        <strong>Sets:</strong>{" "}
+                        {singWork.sets}
+                        </p>
+
+                        <p>
+                        <strong>Reps:</strong>{" "}
+                        {singWork.reps}
+                        </p>
+
+                        <p>
+                        <strong>Rating:</strong>{" "}
+                        {singWork.rating}
+                        </p>
+                    </div>
                     <div className="badge badge-secondary">NEW</div>
                     <div className="badge badge-secondary">NEW</div>
 
