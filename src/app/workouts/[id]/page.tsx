@@ -1,12 +1,13 @@
 import fatchData from '@/lib/FatchData';
 import { IWorkout } from '@/types/wk.type';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import React from 'react';
 
 
 type TProductDetailsProps = {
   params: {
-    id: number;
+    id: string;
   };
 };
 
@@ -14,26 +15,32 @@ export async function generateStaticParams() {
     const allWorks = await fatchData();
 
     return allWorks.map((item: IWorkout) => {
-        return {id: item.id}
+        return {id: item.id.toString()}
     })    
 }
 
 
 const ProductDetails = async({params}: TProductDetailsProps) => {
     const { id } = await params;
-    const 
+    const allWorks = await fatchData();
+
+    const singWork = allWorks.find((singWork: IWorkout)=> singWork.id==Number(id))
+
+     if (!singWork) {
+        notFound();
+     }
+
     return (
         <main>
-            {data.map((item) => (
-            <div key={item.id} item={item}>
+            
+            <div>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     {/* <Image> */}
                     <div>
-                    <h1 className="text-5xl font-bold">Box Office News!</h1>
+                    <h1 className="text-5xl font-bold">{singWork.title}</h1>
                     <p className="py-6">
-                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
-                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                        {singWork.discription}
                     </p>
                     <div className="badge badge-secondary">NEW</div>
                     <div className="badge badge-secondary">NEW</div>
@@ -61,9 +68,9 @@ const ProductDetails = async({params}: TProductDetailsProps) => {
             </div>
             
             </div>
-           )) }
+           
         </main>
-    );
+);
 };
 
 export default ProductDetails;
