@@ -16,7 +16,7 @@ const WorkCard = ({ workout }: TWorkCardProps) => {
           alt={workout.name}
           width={500}
           height={300}
-          className="object-cover"
+          className="object-contain"
         />
       </figure>
 
@@ -44,8 +44,8 @@ const WorkCard = ({ workout }: TWorkCardProps) => {
         </div>
         
         <Link
-          href={`/src/app/${workout.id}`}
-          className="mt-5 block w-full rounded-xl bg-green-600 py-3 text-center font-semibold text-white transition hover:bg-green-700"
+          href={`/workouts/${workout.id}`}
+          className="mt-5 block w-full rounded-xl bg-auto py-3 text-center font-semibold text-white transition hover:bg-auto"
         >
           
           View Details

@@ -5,7 +5,7 @@ const MyPlanPage = () => {
         <div>
             <h1 className='mt-8'>MY PLAN</h1>
             <p>Cap of five lifts for today. Finish them, then load more.</p>
-            <div className="flex w-full flex-col lg:flex-row py-4">
+            <div className="flex w-full flex-col lg:flex-row py-4 mx-9">
                 <div className="card bg-base-300 rounded-box grid h-32 grow place-items-center">content</div>
                 <div className="divider lg:divider-horizontal"></div>
                 <div className="card bg-base-300 rounded-box grid h-32 grow place-items-center">content</div>

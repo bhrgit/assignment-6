@@ -6,9 +6,9 @@ import React from 'react';
 
 
 type TProductDetailsProps = {
-  params:  Promise<{
+  params:  {
     id: string;
-  }>;
+  };
 };
 
 export async function generateStaticParams() {
@@ -37,7 +37,7 @@ const ProductDetails = async({params}: TProductDetailsProps) => {
         <main>
             
             <div>
-            <div className="hero bg-base-200 min-h-screen">
+            <div className="hero bg-neutral min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <Image
                     src={singWork.image}
@@ -46,12 +46,12 @@ const ProductDetails = async({params}: TProductDetailsProps) => {
                     alt={singWork.name}
                     className="rounded-lg"/>
 
-                    <div>
+                    <div className=' text-amber-100'>
                     <h1 className="text-5xl font-bold">{singWork.name}</h1>
                     <p className="py-6">
                         {singWork.description}
                     </p>
-                    <div className="space-y-2">
+                    <div className="space-y-2 text-amber-50">
                         <p>
                         <strong>Equipment:</strong>{" "}
                         {singWork.equipment}
@@ -86,28 +86,17 @@ const ProductDetails = async({params}: TProductDetailsProps) => {
                         <strong>Rating:</strong>{" "}
                         {singWork.rating}
                         </p>
+                        <p>
+                        <strong>Instructions:</strong>{" "}
+                        {singWork.instructions}
+                        </p>
                     </div>
-                    <div className="badge badge-secondary">NEW</div>
-                    <div className="badge badge-secondary">NEW</div>
-
-                    <ul className="list-col-grow bg-base-100 rounded-box shadow-md">
-  
-                        <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Most played songs this week</li>  
-                        <li className="list-col-grow">
-                            <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
-                        </li>
-
-                        <li className="p-4 pb-2 text-xs opacity-60 tracking-wide">Most played songs this week</li>  
-                        <li className="list-col-grow">
-                            <div className="text-xs uppercase font-semibold opacity-60">Remaining Reason</div>
-                        </li>
                     
-                    </ul>
-                    <h1></h1>
-                    <p></p>
-
-                    <button className="btn btn-primary">Get Started</button>
-                    <button className="btn btn-primary">Get Started</button>
+                    <div className='flex my-6 gap-6'>
+                        <button className="btn btn-primary">{`Add to today's plan`}</button>
+                        <button className="btn btn-primary">Save for later</button>
+                    </div>
+                    
                     </div>
                 </div>
             </div>
